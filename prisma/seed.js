@@ -2,9 +2,7 @@
 const prisma = require('../prisma');
 
 const seed = async () => {
-  // Inside the 'seed' function, we'll write code to create data (authors and books) in a database.
-  // However, there's currently no code written here for that purpose.
-  // You would typically add code here to create authors and their books.
+
 };
 
 // Call the 'seed' function, which will execute the code inside it. It returns a Promise.
@@ -15,3 +13,19 @@ seed()
     await prisma.$disconnect(); // Ensure that we disconnect from the database.
     process.exit(1); // Exit the program with an error code (1).
   });
+
+  
+/*  -- CreateTable
+CREATE TABLE "Author" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Book" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "title" TEXT NOT NULL,
+    "authorId" INTEGER NOT NULL,
+    CONSTRAINT "Book_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "Author" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+*/
