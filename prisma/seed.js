@@ -2,15 +2,25 @@
 const prisma = require ('../prisma');
 
 const authorNames = require ('../data/authors');
+const bookTitles = require ('../data/books');
 
 const seed = async () => {
-  authorNames.map (async author => {
-    const author = await prisma.user.create ({
+  const authorPromises = authorNames.map (async authorName => {
+    return prisma.author.create ({
       data: {
-        name: author,
+        name: authorName,
       },
     });
   });
+
+  const bookPromises = bookTitles.map (async bookTitle => {
+    return prisma.book.create ({
+      data: {
+        title: bookTitle,
+      },
+    });
+  });
+  await Promise.all ([...authorPromises, ...bookPromises]);
 };
 // Call the 'seed' function, which will execute the code inside it. It returns a Promise.
 seed ()

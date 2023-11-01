@@ -1,4 +1,4 @@
-const authorNames = [
+const authors = [
   'John Smith',
   'Alice Johnson',
   'David Williams',
@@ -21,4 +21,4 @@ const authorNames = [
   'Grace Scott',
 ];
 
-module.exports = authorNames;
+module.exports = authors;
